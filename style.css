@@ -168,7 +168,7 @@ h2 {
   max-width: 500px; /* limit most videos */
 }
 
-/* Larger About page video */
+/* About page video */
 .about .about-video {
   max-width: 700px !important; /* force override */
   width: 100%;
@@ -207,8 +207,8 @@ a.download-cv:hover {
 }
 
 .project {
-  flex: 1 1 45%;          /* roughly half width, but flexible */
-  min-width: 300px;       /* don’t shrink too small */
+  flex: 1 1 45%;          /* flexible half width */
+  min-width: 300px;      
   background-color: #ffffffcc;
   padding: 1rem;
   border-radius: 1rem;
@@ -216,7 +216,7 @@ a.download-cv:hover {
 }
 
 .project-video {
-  width: 100%;            /* scales to container */
+  width: 100%;            /* scale to container */
   max-width: 500px;
   border-radius: 1rem;
   margin-bottom: 1rem;
@@ -224,7 +224,7 @@ a.download-cv:hover {
 
 .about-video {
   width: 100%;
-  max-width: 700px;   /* keep it larger than project videos */
+  max-width: 700px;   /* keep larger than project videos */
   border-radius: 1rem;
   display: block;
   margin: 0 auto;     /* center horizontally */
@@ -237,24 +237,61 @@ a.download-cv:hover {
   margin-bottom: 1rem;
 }
 
+/* ---------- Graphics Section Layout ---------- */
+.graphics-flex {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.graphics-text {
+  flex: 1 1 40%;
+  max-width: 500px;
+  color: #333;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.graphics-text h2 {
+  color: #4b3f72;
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
 /* ---------- Slideshow ---------- */
 .slideshow-container {
-  max-width: 700px;
+  flex: 1 1 55%;
+  max-width: 650px;
+  width: 90%;
   position: relative;
   margin: 2rem auto;
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   background-color: #ffffffcc;
+  transition: transform 0.3s ease;
 }
 
+
+
+/* Images & videos */
+.slide-img,
+.slide-video {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 1rem;
+  display: block;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+/* Slides */
 .slide {
   display: none;
-}
-
-.slide-img {
-  width: 100%;
-  border-radius: 1rem;
 }
 
 /* Arrows */
@@ -309,6 +346,23 @@ a.download-cv:hover {
   from {opacity: .4}
   to {opacity: 1}
 }
+
+/* Responsive stacking on mobile */
+@media (max-width: 900px) {
+  .graphics-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .graphics-text, .slideshow-container {
+    max-width: 100%;
+  }
+
+  .graphics-text {
+    text-align: center;
+  }
+}
+
 
 /* ---------- Contact Form ---------- */
 .iframe-container {
