@@ -237,6 +237,51 @@ a.download-cv:hover {
   margin-bottom: 1rem;
 }
 
+/* ---------- Dropdown Menu ---------- */
+nav ul li.dropdown {
+  position: relative;
+}
+
+nav ul li .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* show below the parent */
+  left: 0;
+  background-color: #E8D9FF;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 0.75rem;
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  min-width: 180px;
+  z-index: 999;
+}
+
+nav ul li .dropdown-menu li {
+  width: 100%;
+}
+
+nav ul li .dropdown-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #4b3f72;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+nav ul li .dropdown-menu a:hover {
+  background-color: #d9c1ff;
+}
+
+/* Show dropdown on hover */
+nav ul li.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+[id] {
+  scroll-margin-top: 180px; /* same as your header height */
+}
 /* ---------- Graphics Section Layout ---------- */
 .graphics-flex {
   display: flex;

@@ -92,7 +92,15 @@ document.addEventListener("DOMContentLoaded", () => showSlide(1));
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="projects.html">Projects</a></li>
+      <li class="dropdown">
+  <a href="projects.html">Projects</a>
+  <ul class="dropdown-menu">
+    <li><a href="projects.html#publications">Publications</a></li>
+    <li><a href="projects.html#academic">Academic</a></li>
+    <li><a href="projects.html#personal">Personal</a></li>
+  </ul>
+</li>
+
       <li><a href="graphics.html">Creations</a></li>
       <li><a href="contact.html"> </a></li>
     </ul>
@@ -107,11 +115,9 @@ document.addEventListener("DOMContentLoaded", () => showSlide(1));
       <div class="graphics-text">
         <h2>Creative Projects</h2>
         <p>
-          As someone who loves to create, this section highlights a few of my personal graphic and video projects along with other things I create. 
+          As someone who loves to be creative, this section highlights a few of my favorite personal graphic and video projects along with other things I have created. 
         </p>
-        <p>
-          Scroll through to see digital edits I’ve designed and produced along with other creative projects such as my crochet work.
-        </p>
+        
       </div>
 
       <!-- Right side: slideshow -->
