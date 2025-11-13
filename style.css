@@ -5,79 +5,113 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
+  padding-top: 130px; /* space for fixed header */
 }
 
-/* ---------- Header ---------- */
+/* ---------- Header (Fixed + Compact) ---------- */
 header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: #E8D9FF;
-  padding: 1rem 2rem; /* reset padding */
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   z-index: 1000;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* allow wrapping if needed */
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
 }
 
-/* Stack name and subtitle vertically */
+/* Left side: name & subtitle stacked */
 .header-left {
   display: flex;
   flex-direction: column;
-  min-width: 200px;
-  flex-shrink: 0;
+  justify-content: center;
+  min-width: 220px;
 }
 
-/* Name styling */
-header h1 {
+.header-left h1 {
+  margin: 0;
   font-size: 1.8rem;
   color: #4b3f72;
-  margin: 0;
   line-height: 1.2;
 }
 
-/* Subtitle styling */
-header .subtitle {
+.header-left .subtitle {
   font-size: 1rem;
   color: #6b5b95;
-  margin-top: 0.2rem;
-  white-space: nowrap;
+  margin-top: 0.25rem;
 }
 
-/* Navigation container */
+/* Right side navigation */
 nav {
   flex: 1;
-  min-width: 0; /* allow nav to shrink */
+  display: flex;
+  justify-content: flex-end;
 }
 
-/* Nav list */
 nav ul {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;        /* allow links to wrap */
-  justify-content: flex-end;
-  gap: 1.2rem;
-  padding: 0;
+  gap: 1rem;
   margin: 0;
+  padding: 0;
+  align-items: center;
 }
 
-/* Nav links */
 nav a {
   text-decoration: none;
   color: #4b3f72;
   font-weight: 600;
-  padding: 0.2rem 0.5rem;
+  padding: 0.3rem 0.7rem;
   border-radius: 0.5rem;
-  transition: background 0.3s;
-  white-space: nowrap; /* prevent individual links from breaking */
+  transition: background 0.3s ease;
+  white-space: nowrap;
 }
 
 nav a:hover {
   background-color: #d9c1ff;
+}
+
+/* ---------- Dropdown Menu ---------- */
+nav ul li {
+  position: relative;
+}
+
+nav ul li ul.dropdown-menu {
+  display: none !important; /* hide by default */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #E8D9FF;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 0.75rem;
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  min-width: 180px;
+  z-index: 999;
+}
+
+nav ul li ul.dropdown-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #4b3f72;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+nav ul li ul.dropdown-menu a:hover {
+  background-color: #d9c1ff;
+}
+
+/* Show dropdown on hover */
+nav ul li.dropdown:hover > ul.dropdown-menu {
+  display: block !important;
 }
 
 /* ---------- Responsive Header ---------- */
@@ -91,9 +125,9 @@ nav a:hover {
 
   nav ul {
     justify-content: center;
+    flex-wrap: wrap;
     width: 100%;
     margin-top: 0.75rem;
-    gap: 1rem;
   }
 
   header h1 {
@@ -105,19 +139,15 @@ nav a:hover {
   }
 }
 
-
 /* ---------- Main Section ---------- */
-body{
-  padding-top: 180px;
-}
 main {
-  width: 95%;              /* take almost full width */
-  max-width: 1200px;       /* allow wide screens */
+  width: 95%;
+  max-width: 1200px;
   background: #ffffffcc;
   border-radius: 1.5rem;
   padding: 2rem;
   margin: 2rem auto;
-  display: block;          /* remove flex centering */
+  display: block;
 }
 
 /* ---------- Headings ---------- */
@@ -165,12 +195,11 @@ h2 {
   width: 100%;
   border-radius: 1rem;
   border: 2px solid #c4a1ff;
-  max-width: 500px; /* limit most videos */
+  max-width: 500px;
 }
 
-/* About page video */
 .about .about-video {
-  max-width: 700px !important; /* force override */
+  max-width: 700px !important;
   width: 100%;
   display: block;
   margin: 0 auto;
@@ -178,11 +207,11 @@ h2 {
   border: 2px solid #c4a1ff;
 }
 
-
 .cv-button-container {
-  text-align: center; 
-  margin: 2rem 0;     
+  text-align: center;
+  margin: 2rem 0;
 }
+
 a.download-cv {
   background-color: #c4a1ff;
   color: white;
@@ -197,18 +226,18 @@ a.download-cv:hover {
   background-color: #a87fff;
 }
 
-/*------------Projects------------*/
+/* ---------- Projects ---------- */
 .project-container {
   display: flex;
-  gap: 2rem;             /* space between projects */
-  flex-wrap: wrap;        /* stacks on smaller screens */
-  justify-content: center; /* center projects if less than full width */
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 2rem 0;
 }
 
 .project {
-  flex: 1 1 45%;          /* flexible half width */
-  min-width: 300px;      
+  flex: 1 1 45%;
+  min-width: 300px;
   background-color: #ffffffcc;
   padding: 1rem;
   border-radius: 1rem;
@@ -216,90 +245,20 @@ a.download-cv:hover {
 }
 
 .project-video {
-  width: 100%;            /* scale to container */
+  width: 100%;
   max-width: 500px;
   border-radius: 1rem;
   margin-bottom: 1rem;
 }
 
-.about-video {
-  width: 100%;
-  max-width: 700px;   /* keep larger than project videos */
-  border-radius: 1rem;
-  display: block;
-  margin: 0 auto;     /* center horizontally */
-}
-
 .project-image {
-  width: 100%;            /* scales to container */
+  width: 100%;
   height: auto;
   border-radius: 1rem;
   margin-bottom: 1rem;
 }
 
-/* ---------- Dropdown Menu ---------- */
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li {
-  position: relative;
-}
-
-nav ul li a {
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  color: #4b3f72;
-  font-weight: 500;
-  display: inline-block;
-}
-
-/* Dropdown menu (hidden by default) */
-nav ul li ul.dropdown-menu {
-  display: none !important; /* force hidden */
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #E8D9FF;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 0.75rem;
-  list-style: none;
-  padding: 0.5rem 0;
-  margin: 0;
-  min-width: 180px;
-  z-index: 999;
-}
-
-/* Dropdown links */
-nav ul li ul.dropdown-menu a {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: #4b3f72;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background 0.3s ease;
-}
-
-nav ul li ul.dropdown-menu a:hover {
-  background-color: #d9c1ff;
-}
-
-/* dropdown only on hover */
-nav ul li.dropdown:hover > ul.dropdown-menu {
-  display: block !important;
-}
-
-/* dropdown above other content */
-header, nav {
-  position: relative;
-  z-index: 10;
-}
-
-
-
-/* ---------- Graphics Section Layout ---------- */
+/* ---------- Graphics Section ---------- */
 .graphics-flex {
   display: flex;
   align-items: flex-start;
@@ -337,9 +296,6 @@ header, nav {
   transition: transform 0.3s ease;
 }
 
-
-
-/* Images & videos */
 .slide-img,
 .slide-video {
   width: 100%;
@@ -351,12 +307,10 @@ header, nav {
   background-color: #ffffff;
 }
 
-/* Slides */
 .slide {
   display: none;
 }
 
-/* Arrows */
 .prev, .next {
   cursor: pointer;
   position: absolute;
@@ -382,7 +336,6 @@ header, nav {
   color: white;
 }
 
-/* Dots */
 .dot {
   cursor: pointer;
   height: 12px;
@@ -398,7 +351,6 @@ header, nav {
   background-color: #a87fff;
 }
 
-/* Fade animation */
 .fade {
   animation-name: fade;
   animation-duration: 1s;
@@ -409,41 +361,24 @@ header, nav {
   to {opacity: 1}
 }
 
-/* Responsive stacking on mobile */
-@media (max-width: 900px) {
-  .graphics-flex {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .graphics-text, .slideshow-container {
-    max-width: 100%;
-  }
-
-  .graphics-text {
-    text-align: center;
-  }
-}
-
-
 /* ---------- Contact Form ---------- */
 .iframe-container {
   width: 100%;
-  max-width: 700px; /* match your main content width */
-  margin: 0 auto;   /* center on the page */
+  max-width: 700px;
+  margin: 0 auto;
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
+
 .iframe-container iframe {
   border: none;
 }
 
-
 /* ---------- Footer ---------- */
 footer {
   display: flex;
-  justify-content: space-between; /* left = copyright, right = links */
+  justify-content: space-between;
   align-items: center;
   font-size: 0.9rem;
   color: #6b5b95;
@@ -464,4 +399,20 @@ footer .footer-links a {
 
 footer .footer-links a:hover {
   color: #a87fff;
+}
+
+/* ---------- Responsive Graphics ---------- */
+@media (max-width: 900px) {
+  .graphics-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .graphics-text, .slideshow-container {
+    max-width: 100%;
+  }
+
+  .graphics-text {
+    text-align: center;
+  }
 }
