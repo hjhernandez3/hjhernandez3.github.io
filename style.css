@@ -279,9 +279,7 @@ nav ul li.dropdown:hover .dropdown-menu {
   display: block;
 }
 
-[id] {
-  scroll-margin-top: 180px; /* same as your header height */
-}
+
 /* ---------- Graphics Section Layout ---------- */
 .graphics-flex {
   display: flex;
