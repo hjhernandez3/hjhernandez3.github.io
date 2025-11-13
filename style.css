@@ -246,7 +246,6 @@ nav ul {
 
 nav ul li {
   position: relative;
-  display: inline-block;
 }
 
 nav ul li a {
@@ -254,16 +253,12 @@ nav ul li a {
   padding: 0.5rem 1rem;
   color: #4b3f72;
   font-weight: 500;
+  display: inline-block;
 }
 
-/* Dropdown container */
-nav ul li.dropdown {
-  position: relative;
-}
-
-/* Dropdown menu - hidden by default */
-nav ul li .dropdown-menu {
-  display: none;
+/* Dropdown menu (hidden by default) */
+nav ul li ul.dropdown-menu {
+  display: none !important; /* force hidden */
   position: absolute;
   top: 100%;
   left: 0;
@@ -278,7 +273,7 @@ nav ul li .dropdown-menu {
 }
 
 /* Dropdown links */
-nav ul li .dropdown-menu a {
+nav ul li ul.dropdown-menu a {
   display: block;
   padding: 0.5rem 1rem;
   color: #4b3f72;
@@ -287,13 +282,19 @@ nav ul li .dropdown-menu a {
   transition: background 0.3s ease;
 }
 
-nav ul li .dropdown-menu a:hover {
+nav ul li ul.dropdown-menu a:hover {
   background-color: #d9c1ff;
 }
 
-/* 🪄 Show dropdown only when hovering */
-nav ul li.dropdown:hover > .dropdown-menu {
-  display: block;
+/* dropdown only on hover */
+nav ul li.dropdown:hover > ul.dropdown-menu {
+  display: block !important;
+}
+
+/* dropdown above other content */
+header, nav {
+  position: relative;
+  z-index: 10;
 }
 
 
